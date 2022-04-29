@@ -15,6 +15,14 @@ node{
     } 
     sh 'docker push mohitknamdeo/mohit-app:1.0.0'
   } 
+  stage ('Deploy to Dev') { 
+    def dockerRun = 'docker run -d -p 9000:8080 —name my-tomcat-app mohitknamdeo/mohit-app:1.0.0'
+    withCredentials([sshUserPrivateKey(credentialsId: '841d7a4e-c9db-4b81-8be4-b1fefcce3fa9', keyFileVariable: 'deploy-to-dev-docker', usernameVariable: 'ubuntu')]) {  
+      sshagent(['deploy-to-dev-docker']) { 
+        sh "ssh -o StrictHostKeyChecking=no ubuntu@18.224.181.103 ${dockerRun}"
+      }
+    } 
+  } 
 }  
 
 
