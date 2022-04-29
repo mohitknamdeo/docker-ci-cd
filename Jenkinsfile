@@ -7,7 +7,7 @@ node{
     sh "git checkout master"
   } 
   stage ('docker image build') { 
-    sh 'docker build -t . mohitknamdeo/mohit-app:1.0.0 '
+    sh 'docker build . -t mohitknamdeo/mohit-app:1.0.0 '
   } 
   stage ('Push Docker image to DockerHub') { 
     withCredentials([string(credentialsId: 'DockerHub',variable: 'DockerHub')]) { 
