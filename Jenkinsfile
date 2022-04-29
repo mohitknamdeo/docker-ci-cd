@@ -13,8 +13,8 @@ node{
     sh 'docker build -t mohitknamdeo/mohit-app:1.0.0 '
   } 
   stage ('Push Docker image to DockerHub') { 
-    withCredentials([string(credentialsId: 'DockerHub')]) { 
-      sh "docker login -u mohitknamdeo -p ${dockerhubaccount}"
+    withCredentials([string(credentialsId: 'DockerHub',variable: 'DockerHub')]) { 
+      sh 'docker login -u mohitknamdeo -p ${DockerHub}'
     } 
     sh 'docker push mohitknamdeo/mohit-app:1.0.0'
   } 
