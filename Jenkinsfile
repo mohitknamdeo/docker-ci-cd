@@ -18,7 +18,7 @@ node{
   stage ('Deploy to Dev') { 
     def dockerRun = 'docker run -d -p 9000:8080 —name my-tomcat-app mohitknamdeo/mohit-app:1.0.0'
     sshagent(['841d7a4e-c9db-4b81-8be4-b1fefcce3fa9']) { 
-      sh "ssh -o StrictHostKeyChecking=no root@18.224.181.103 ${dockerRun}"
+      sh "ssh -o StrictHostKeyChecking=no ubuntu@18.224.181.103 ${dockerRun}"
     }
   } 
 }  
