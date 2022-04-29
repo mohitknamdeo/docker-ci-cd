@@ -6,9 +6,6 @@ node{
     sh "git branch -r"
     sh "git checkout master"
   } 
-  stage ('package stage') { 
-    sh "mvn clean package"
-  }
   stage ('docker image build') { 
     sh 'docker build -t mohitknamdeo/mohit-app:1.0.0 '
   } 
