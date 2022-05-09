@@ -10,7 +10,7 @@ node{
     sh 'docker build . -t mohitknamdeo/mkn-app:1.0.0 '
   } 
   stage ('Push Docker image to DockerHub') { 
-    withDockerRegistory([credentialsId: 'mycreds', url: 'https://index.docker.io/v1/' ]) { 
+    withDockerRegistry([credentialsId: 'mycreds', url: 'https://index.docker.io/v1/' ]) { 
       sh 'docker push mohitknamdeo/mkn-app:1.0.0'
     } 
   } 
